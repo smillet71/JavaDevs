@@ -1,6 +1,9 @@
 package stm.dev.game.objects;
 
 import java.util.Hashtable;
+import java.util.Vector;
+
+import stm.dev.game.objects.Ship.ModuleFilterFunction;
 
 /**
  * 
@@ -10,13 +13,28 @@ import java.util.Hashtable;
 public class Network {
 	
 	//
-	Hashtable<String, Module> participants = null;
+	Vector<Node> nodes = null;
+	
+	//
+	Vector<Module> participants = null;
 
 	/**
 	 * Créer un réseau de modules
 	 */
 	public Network() {
-		participants = new Hashtable<String, Module>();
+		nodes = new Vector<Node>();
+		participants = new Vector<Module>();
+	}
+	
+	/**
+	 * 
+	 * @param n
+	 */
+	public void addNode(Node n, Ship.ModuleFilterFunction f2) {
+		nodes.add(n);
+		for (Module m : n.getModules()) {
+			if (f2.filter(m)) participants.add(m);
+		}
 	}
 	
 }

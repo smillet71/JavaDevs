@@ -1,5 +1,6 @@
 package stm.dev.game.objects;
 
+import java.util.Collection;
 import java.util.Hashtable;
 
 import stm.dev.util.Parameter;
@@ -103,4 +104,20 @@ public class Node implements CommandProcessorInterface {
 		assert(_n instanceof String);
 		links.put(_n, link);
 	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public Collection<Link> getLinks() {
+		return links.values();
+	}
+	/**
+	 * 
+	 * @return
+	 */
+	public Collection<Module> getModules() {
+		return modules.values();
+	}
 }
+
