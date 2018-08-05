@@ -33,8 +33,15 @@ public class Network {
 	public void addNode(Node n, Ship.ModuleFilterFunction f2) {
 		nodes.add(n);
 		for (Module m : n.getModules()) {
-			if (f2.filter(m)) participants.add(m);
+			if (f2.filter(m)) {
+				System.out.println("\t\t> module: "+m.getClass().getName()+" --> "+m);
+				participants.add(m);
+			}
 		}
+	}
+
+	public int getParticipantsNumber() {
+		return participants.size();
 	}
 	
 }

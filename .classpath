@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre-10.0.2">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="libraries/ini4j-0.5.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/smill/Desktop/processing-3.3.7/core/library/core.jar"/>
+	<classpathentry kind="lib" path="C:/Users/smill/Desktop/processing-3.3.7/core/library/jogl-all.jar"/>
+	<classpathentry kind="lib" path="C:/Users/smill/Documents/Processing/libraries/controlP5/library/controlP5.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

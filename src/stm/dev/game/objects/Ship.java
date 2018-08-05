@@ -78,10 +78,10 @@ public class Ship extends GameObject implements CommandProcessorInterface {
 	 * Créer les réseaux de données, énergie, matière, bots
 	 */
 	public void buildAllNetworks() {
-		energyNetworks = buildNetworks((Link l) -> l.energy, (Module m) -> m.needsEnergyConnection(), () -> new Network());
-		dataNetworks = buildNetworks((Link l) -> l.data, (Module m) -> m.needsDataConnection(), () -> new Network());
+		//energyNetworks = buildNetworks((Link l) -> l.energy, (Module m) -> m.needsEnergyConnection(), () -> new Network());
+		//dataNetworks = buildNetworks((Link l) -> l.data, (Module m) -> m.needsDataConnection(), () -> new Network());
 		matterNetworks = buildNetworks((Link l) -> l.matter, (Module m) -> m.needsMatterConnection(), () -> new Network());
-		botsNetworks = buildNetworks((Link l) -> l.bots, (Module m) -> m.needsBotsConnection(), () -> new Network());
+		//botsNetworks = buildNetworks((Link l) -> l.bots, (Module m) -> m.needsBotsConnection(), () -> new Network());
 	}
 
 	// Filtrage des modules
@@ -118,10 +118,20 @@ public class Ship extends GameObject implements CommandProcessorInterface {
 			Network net = nb.create();
 			networks.add(net);
 			Node n = input.firstElement();
+			System.out.println("# new network: ");
+			System.out.println("\t> node: "+n.getNodeName());
 			input.remove(n);
-			net.addNode(n, f2);
 			//
 			add2network(n, input, f1, f2, nb, net);
+			//
+			if (net.getParticipantsNumber()>0) {
+				net.addNode(n, f2);
+				System.out.println(" > network added ! ");
+			}
+			else {
+				System.out.println(" > network removed ! ");		
+			}
+
 		}
 
 		//
@@ -144,6 +154,7 @@ public class Ship extends GameObject implements CommandProcessorInterface {
 			if (f1.filter(link)) {
 				Node nextNode = (link.n1 == firstElement)?link.n2:link.n1;
 				if (input.contains(nextNode)) {
+					System.out.println("\t> node: "+nextNode.getNodeName());
 					input.remove(nextNode);
 					net.addNode(nextNode, f2);
 					add2network(nextNode, input, f1, f2, nb, net);

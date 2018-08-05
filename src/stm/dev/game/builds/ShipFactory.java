@@ -47,9 +47,9 @@ public class ShipFactory {
 		ship.connectNodes(axis, support1, true, true, true, true);
 		ship.connectNodes(axis, support2, true, true, true, true);
 		// connection between support node 1 and command node
-		ship.connectNodes(cmd, support1, true, true, true, true);
+		ship.connectNodes(cmd, support1, true, true, false, true);
 		// connection between Axis support nodes
-		ship.connectNodes(engine, support2, true, true, true, true);
+		ship.connectNodes(engine, support2, true, true, false, true);
 		//
 		ship.buildAllNetworks();
 		//
